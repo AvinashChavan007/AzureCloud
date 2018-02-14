@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google App Datastore</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse bg-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/login">CSE 6331 - Cloud Computing | Avinash Chavan - 1001415890</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/uploadpage">Upload Image</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/viewpage">View Image(Storage)</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/viewfromdatabase">View Image(Database)</a>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+            <a class="navbar-brand" href="#">Picture Viewing For {{msg}}</a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <h2>Upload file in Database</h2>
+    <form id="upload-image" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="filetitle">Title:</label>
+            <input type="text" class="form-control" name="filetitle" id="filetitle">
+        </div>
+        <div class="form-group">
+            <label for="fileauthor">Author:</label>
+            <input type="text" class="form-control" name="fileauthor" id="fileauthor">
+        </div>
+        <div class="form-group">
+            <input name="inputstart" id="inputstart" class="rating rating-loading input" data-min="0" data-max="5" data-step="1">
+        </div>
+        <div class="form-group">
+            <label for="file-picker">Browse File:</label>
+            <input id="file-picker" type="file" name="file">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+            <button type="reset" class="btn btn-danger">Reset</button>
+        </div>
+    </form>
+    <h2>Upload file in Container</h2>
+    <form id="upload-image-storage" action="{{ url_for('uploadtostorage') }}" method="POST"
+          enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="filetitle1">Title:</label>
+            <input type="text" class="form-control" name="filetitle1" id="filetitle1">
+        </div>
+        <div class="form-group">
+            <label for="fileauthor1">Author:</label>
+            <input type="text" class="form-control" name="fileauthor1" id="fileauthor1">
+        </div>
+        <div class="form-group">
+            <input name="inputstar" id="inputstar" class="rating rating-loading input" data-min="0" data-max="5" data-step="1">
+        </div>
+        <div class="form-group">
+            <label for="file-picker1">Browse File:</label>
+            <input id="file-picker1" type="file" name="file1">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+            <button type="reset" class="btn btn-danger">Reset</button>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+$("#inputstart").rating();
+$("#inputstar").rating();
+</script>
+</html>

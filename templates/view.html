@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Images</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse bg-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/login">CSE 6331 - Cloud Computing | Avinash Chavan - 1001415890</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/uploadpage">Upload Image</a>
+        </div>
+                <div class="navbar-header">
+            <a class="navbar-brand" href="/viewpage">View Image(Storage)</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/viewfromdatabase">View Image(Database)</a>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+            <a class="navbar-brand" href="#">Picture Viewing For {{msg}}</a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        {% for item in imgagefile %}
+        <div class="col-md-12">
+            <div class="thumbnail">
+                <a href="{{item[4]}}" target="_blank">
+                    <img src="{{item[4]}}" width="304" height="236">
+                    <div class="caption">
+                        <p>
+                            <b>Title : {{ item[1] }}</b><br>
+                            <b>Author : {{ item[2] }}</b><br>
+                            <b>File Name : {{ item[3] }}</b><br>
+                            <b>Created Date : {{ item[5] }}</b><br>
+                            <input class="rating rating-loading input" data-min="0" data-max="5" data-step="0.1"
+                                   value="{{ item[6] }}" disabled><br>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script>
+$(".input").rating();
+
+</script>
+</body>
+</html>
